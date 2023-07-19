@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form action="loginprocess.php" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <label for="remember_me">Remember Me:</label>
+        <input type="checkbox" id="remember_me" name="remember_me">
+        <br>
+        <input type="submit" value="Login">
+        <!-- Add a link to the change_password.html form, passing the old password value -->
+        <a href="password_change.html" onclick="event.preventDefault(); document.getElementById('old_password').value = document.getElementById('password').value; this.parentNode.submit();">Change Password</a>
+    </form>
+</body>
+</html>

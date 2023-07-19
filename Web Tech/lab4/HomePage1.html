@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photo Uploader</title>
+</head>
+<body>
+    <h1>Photo Uploader</h1>
+
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <label for="photo">Select a photo:</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+        <br>
+        <label for="caption">Caption:</label>
+        <input type="text" id="caption" name="caption" required>
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
