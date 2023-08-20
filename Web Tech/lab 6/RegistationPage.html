@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Virtual Dokanbd.com Registration Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #87CEEB; 
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 750px; 
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #3498db;
+        }
+
+        label {
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .btn:hover {
+                background-color: #2980b9;
+            }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+        .btn-login {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+            .btn-login:hover {
+                background-color: #2980b9;
+            }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Please First Register here!</h1>
+        <form method="post" action='./controller/Welcome.php' enctype="multipart/form-data">
+            <!-- First Name -->
+            <div>
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" id="firstName" value="<?php echo isset($_POST['firstName']) ? htmlspecialchars($_POST['firstName']) : ''; ?>">
+                <?php if (isset($errors['firstName'])) { ?>
+                <span style="color: red;"><?php echo $errors['firstName']; ?></span>
+                <?php } ?>
+            </div>
+
+            <!-- Last Name -->
+            <div>
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" id="lastName" value="<?php echo isset($_POST['lastName']) ? htmlspecialchars($_POST['lastName']) : ''; ?>">
+                <?php if (isset($errors['lastName'])) { ?>
+                <span style="color: red;"><?php echo $errors['lastName']; ?></span>
+                <?php } ?>
+            </div>
+
+            <!-- Password -->
+            <div>
+                <label for="passWord">Password</label>
+                <input type="password" name="passWord" id="passWord" value="">
+                <?php if (isset($errors['password'])) { ?>
+                <span style="color: red;"><?php echo $errors['password']; ?></span>
+                <?php } ?>
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
+                <?php if (isset($errors['email'])) { ?>
+                <span style="color: red;"><?php echo $errors['email']; ?></span>
+                <?php } ?>
+            </div>
+
+            <!-- Upload Picture -->
+            <div>
+                <label for="uploadPicture">Upload Your Profile Picture</label>
+                <input type="file" name="uploadPicture" id="uploadPicture">
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <label for="contactType">Contact</label>
+                <select name="contact">
+                    <option value="BD">BD+880</option>
+                    <option value="UK">UK+44</option>
+                    <option value="CHN">CHN+86</option>
+                    <option value="RU" selected>RU+7</option>
+                </select>
+                <input type="text" name="contact" id="contact" value="<?php echo isset($_POST['contact']) ? htmlspecialchars($_POST['contact']) : ''; ?>" ">
+                <?php if (isset($errors['contact'])) { ?>
+                <span style="color: red;"><?php echo $errors['contact']; ?></span>
+                <?php } ?>
+            </div>
+
+            <!-- Gender -->
+            <div>
+                <label for="gender">Gender</label>
+                <input type="radio" name="gender" id="gender" value="Male"<?php if (isset($_POST['gender']) && $_POST['gender'] == 'Male') echo 'checked'; ?>>Male
+                <input type="radio" name="gender" id="gender" value="Female" <?php if (isset($_POST['gender']) && $_POST['gender'] == 'Female') echo 'checked'; ?>>Female
+                <?php if (isset($errors['gender'])) { ?>
+                <span style="color: red;"><?php echo $errors['gender']; ?></span>
+                <?php } ?>
+            </div>
+
+            <!-- Date of Birth -->
+            <div>
+                <label for="dob">Date Of Birth</label>
+                <input type="date" name="dob" id="dob" value="<?php echo isset($_POST['dob']) ? $_POST['dob'] : ''; ?>">
+                <?php if (isset($errors['dob'])) { ?>
+                <span style="color: red;"><?php echo $errors['dob']; ?></span>
+                <?php } ?>
+            </div>
+
+            <!-- Religion -->
+            <div>
+                <label for="religion">Religion</label>
+                <input type="radio" name="religion" id="religion" value="Islam"<?php if (isset($_POST['religion']) && $_POST['religion'] == 'Islam') echo 'checked'; ?>>Islam
+                <input type="radio" name="religion" id="religion" value="Christian"<?php if (isset($_POST['religion']) && $_POST['religion'] == 'Christian') echo 'checked'; ?>>Christian
+                <input type="radio" name="religion" id="religion" value="Hindu" <?php if (isset($_POST['religion']) && $_POST['religion'] == 'Hindu') echo 'checked'; ?>>Hindu
+                <input type="radio" name="religion" id="religion" value="Buddhism" <?php if (isset($_POST['religion']) && $_POST['religion'] == 'Buddhism') echo 'checked'; ?>>Buddhism
+                <?php if (isset($errors['religion'])) { ?>
+                <span style="color: red;"><?php echo $errors['religion']; ?></span>
+                <?php } ?>
+            </div>
+
+            <div>
+                <input type="submit" value="Register">
+                <input type="reset" value="Clear">
+            </div>
+        </form>
+        <div>
+            <br />
+            <a href="Userlogin.php" class="btn-login">Log in</a>
+        </div>
+        <div />
+
+</body>
+</html>
